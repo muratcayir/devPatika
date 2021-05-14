@@ -1,35 +1,32 @@
-let name=prompt("Adınızı giriniz :")
-
-let sorgu = document.querySelector("#myName")
-
-sorgu.innerHTML=` ${name}`
-
-
-function saatFunc()
+const name = ()=>
 {
-    var sonuc = new Array(3);
-    var simdi = new Date();
-    
-    sonuc[0] = simdi.getHours();
-    sonuc[1] = simdi.getMinutes();
-    sonuc[2] = simdi.getSeconds();
 
-    for(i = 0;i < 3;i++)
-        sonuc[i] = sonuc[i] < 10 ? '0' + sonuc[i] : sonuc[i];
+    let name=prompt("Adınızı giriniz :")
+
+    let sorgu = document.getElementById("name")
     
-    return sonuc;  
+    sorgu.innerHTML=`${name}`
 }
 
-function saatGoster()
-{
-    saat = saatFunc();
-    document.write("saatFunc : " + saat[0] + "/" + saat[1] + "/" + saat[2] + "<br/>");
-    var saat = document.getElementById("myClock");
-	saat.innerHTML = verSaat();
+name()
+
+
+const day = () => {
+
+    var days = ["Pazartesi","Salı","Çarşamba","Perşembe","Cuma","Cumartesi","Pazar"];
+    
+    document.getElementById("date").innerHTML = days[new Date().getDay()-1];
 }
 
-saatGoster();
+day();
 
-setInterval("saatGoster()", 1000);
+let saat = ()=>
+{
+    let simdi = new Date().toLocaleTimeString()
 
+    let saatSimdi =document.getElementById("clock")
+    
+    saatSimdi.innerHTML=`${simdi}`;
+}
 
+setInterval(saat,1000);
